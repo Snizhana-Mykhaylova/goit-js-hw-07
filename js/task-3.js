@@ -1,5 +1,3 @@
-'use strict';
-
 const images = [
   {
     url:
@@ -20,15 +18,24 @@ const images = [
 
 const galleryRef = document.querySelector('#gallery');
 
+// images.map(image => {
+//   const galleryItemRef = document.createElement('li');
+//   galleryItemRef.classList.add('gallery-card');
+
+//   const galleryImageRef = document.createElement('img');
+//   galleryImageRef.src = image.url;
+//   galleryImageRef.alt = image.alt;
+//   galleryImageRef.classList.add('gallery-card__image');
+
+//   galleryItemRef.appendChild(galleryImageRef);
+//   galleryRef.appendChild(galleryItemRef);
+// });
+
 images.map(image => {
-  const galleryItemRef = document.createElement('li');
-  galleryItemRef.classList.add('gallery-card');
-
-  const galleryImageRef = document.createElement('img');
-  galleryImageRef.src = image.url;
-  galleryImageRef.alt = image.alt;
-  galleryImageRef.classList.add('gallery-card__image');
-
-  galleryItemRef.appendChild(galleryImageRef);
-  galleryRef.appendChild(galleryItemRef);
+  galleryRef.insertAdjacentHTML(
+    'afterbegin',
+    `<li class="gallery-card">
+    <img class = "gallery-card__image" src = "${image.url}" alt = "${image.alt}"/>
+    </li>`,
+  );
 });
