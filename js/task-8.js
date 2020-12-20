@@ -8,13 +8,13 @@ const boxesRef = document.querySelector('#boxes');
 
 // рендерит случайный цвет фона
 function rgbaRandom() {
-  let col = `rgb(${Math.round(Math.random())}${Math.round(
-    Math.random(),
-  )}${Math.round(Math.random())}, ${Math.round(Math.random())}, ${Math.round(
-    Math.random(),
-  )})`;
-
-  return col;
+  const randomBetween = (min, max) =>
+    min + Math.floor(Math.random() * (max - min + 1));
+  const r = randomBetween(0, 255);
+  const g = randomBetween(0, 255);
+  const b = randomBetween(0, 255);
+  const rgb = `rgb(${r},${g},${b})`;
+  return rgb;
 }
 
 // рендерит колеуцию
@@ -41,4 +41,5 @@ function destroyBoxes(amount) {
     const div = boxesRef.querySelector('div');
     boxesRef.removeChild(div);
   }
+  inputRef.value = '';
 }
